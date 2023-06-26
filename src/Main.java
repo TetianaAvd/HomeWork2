@@ -1,13 +1,25 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Main {
+
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         int sum = 0;
 
-        int a = 1;
-        int b = 2;
-        int c = 3;
-        int d = 4;
-        int i = 5;
-         sum = a + b + c + d + i;
-        System.out.println(sum);
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Enter number: ");
+
+            try {
+                int number = scanner.nextInt();
+                sum += number;
+            } catch (InputMismatchException e) {
+                System.out.println("Input Error.Enter a number.");
+                scanner.nextLine();
+                i--;
+            }
+        }
+
+        System.out.println("Sum numbers: " + sum);
     }
 }
